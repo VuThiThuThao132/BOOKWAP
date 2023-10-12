@@ -1,11 +1,8 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/HomeScreen';
-import ExploreScreen from '../screens/ExploreScreen';
-import PostManageScreen from '../screens/PostManageScreen';
-import PostScreen from '../screens/PostScreen';
-import ProfileUserScreen from '../screens/ProfileUserScreen';
-import React from 'react';
+
+import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Explore, Home, Post, PostingManagement, UserProfile } from "../screens";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,30 +26,16 @@ const CustomTabBarButton = ({ children, onPress }) => (
     </TouchableOpacity>
 );
 
-const Navigations = () => {
+const BottomTap = () => {
     return (
         <Tab.Navigator
-            // tabBarOptions={{
-            //     showLabel: false,
-            //     tabBarStyle: {
-            //         position: 'absolute',
-            //         bottom: 25,
-            //         left: 20,
-            //         right: 20,
-            //         elevation: 0,
-            //         backgroundColor: '#ffffff',
-            //         borderRadius: 15,
-            //         heigh: 90,
-            //         ...styles.shadow
-            //     }
-            // }}
             screenOptions={{
                 tabBarShowLabel: false,
                 tabBarStyle: [{
                     position: 'absolute',
                     elevation: 0,
                     backgroundColor: '#ffffff',
-                    with: 100,
+                    width: 100,
                     height: 80,
                     ...styles.shadow
                 }, null]
@@ -60,7 +43,7 @@ const Navigations = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={HomeScreen}
+                component={Home}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: 5 }}>
@@ -68,13 +51,13 @@ const Navigations = () => {
                                 source={require("../assets/images/Home.png")}
                                 resizeMode='contain'
                                 style={{
-                                    with: 25,
+                                    width: 25,
                                     height: 25,
-                                    tintColor: focused ? '#000000' : '#000000',
+                                    tintColor: focused ? 'black' : 'black',
                                     marginBottom: 5
                                 }}
                             />
-                            <Text style={{ color: focused ? '#000000' : '#000000', fontSize: 12 }}>Trang chủ</Text>
+                            <Text style={{ color: focused ? 'black' : '#black', fontSize: 12 }}>Trang chủ</Text>
                         </View>
                     ),
                 }}
@@ -82,7 +65,7 @@ const Navigations = () => {
 
             <Tab.Screen
                 name="Explore"
-                component={ExploreScreen}
+                component={Explore}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: 5 }}>
@@ -90,7 +73,7 @@ const Navigations = () => {
                                 source={require("../assets/images/Explore.png")}
                                 resizeMode='contain'
                                 style={{
-                                    with: 25,
+                                    width: 25,
                                     height: 25,
                                     tintColor: focused ? '#000000' : '#000000',
                                     marginBottom: 5
@@ -103,23 +86,15 @@ const Navigations = () => {
             />
 
             <Tab.Screen name="Post"
-                component={PostScreen}
+                component={Post}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        // <Image
-                        //     source={require("../assets/Post.png")}
-                        //     resizeMode='contain'
-                        //     style={{
-                        //         with: 70,
-                        //         height: 70,
-                        //     }}
-                        // />
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: 5 }}>
                             <Image
                                 source={require("../assets/images/Post.png")}
                                 resizeMode='contain'
                                 style={{
-                                    with: 70,
+                                    width: 70,
                                     height: 70,
                                     marginBottom: 5
                                 }}
@@ -131,11 +106,10 @@ const Navigations = () => {
                         <CustomTabBarButton {...props} />
                     )
                 }}
-
             />
 
-            <Tab.Screen name="PostManage"
-                component={PostManageScreen}
+            <Tab.Screen name="PostingManagement"
+                component={PostingManagement}
                 options={{
                     tabBarIcon: (focused) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: 5 }}>
@@ -143,7 +117,7 @@ const Navigations = () => {
                                 source={require("../assets/images/Post-manage.png")}
                                 resizeMode='contain'
                                 style={{
-                                    with: 25,
+                                    width: 25,
                                     height: 25,
                                     tintColor: focused ? '#000000' : '#000000',
                                     marginBottom: 5
@@ -156,7 +130,7 @@ const Navigations = () => {
             />
 
             <Tab.Screen name="ProfileUser"
-                component={ProfileUserScreen}
+                component={UserProfile}
                 options={{
                     tabBarIcon: (focused) => (
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: 5 }}>
@@ -164,7 +138,7 @@ const Navigations = () => {
                                 source={require("../assets/images/profile-user.png")}
                                 resizeMode='contain'
                                 style={{
-                                    with: 25,
+                                    width: 25,
                                     height: 25,
                                     tintColor: focused ? '#000000' : '#000000',
                                     marginBottom: 5
@@ -176,14 +150,18 @@ const Navigations = () => {
                 }}
             />
 
+
         </Tab.Navigator>
     );
 }
+
+export default BottomTap;
+
 const styles = StyleSheet.create({
     shadow: {
         shadowColor: '#7F5DF0',
         shadowOffset: {
-            with: 0,
+            width: 0,
             height: 10,
         },
         shadowOpacity: 0.25,
@@ -191,4 +169,3 @@ const styles = StyleSheet.create({
         elevation: 5,
     }
 });
-export default Navigations;

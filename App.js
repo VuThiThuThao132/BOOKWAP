@@ -1,10 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import Navigations from './navigation/Navigation';
+// import Navigations from './navigation/Navigation';
 import { useFonts } from "expo-font";
 import * as Splashscreen from "expo-splash-screen";
 import { useCallback } from 'react';
+import { Onboarding, Search } from './screens';
+import BottomTap from './navigation/BottomTap';
 
 const Stack = createStackNavigator();
 
@@ -28,10 +30,12 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Navigations />
-      {/* <Stack.Navigator>
-        <Stack.Screen name='' component={} option/>
-      </Stack.Navigator> */}
+      <Stack.Navigator>
+        <Stack.Screen name='Onboard' component={Onboarding} options={{ headerShown: false }} />
+        <Stack.Screen name='Bottom' component={BottomTap} options={{ headerShown: false }} />
+        <Stack.Screen name='Search' component={Search} options={{ headerShown: false }} />
+
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
