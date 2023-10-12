@@ -29,7 +29,7 @@ const CustomTabBarButton = ({ children, onPress }) => (
 const BottomTap = () => {
     return (
         <Tab.Navigator
-            screenOptions={{
+{/*             screenOptions={{
                 tabBarShowLabel: false,
                 tabBarStyle: [{
                     position: 'absolute',
@@ -39,7 +39,16 @@ const BottomTap = () => {
                     height: 80,
                     ...styles.shadow
                 }, null]
-            }}
+            }} */}
+     screenOptions={{
+                tabBarShowLabel: false,
+                tabBarStyle: {
+                    position: 'absolute',
+                    elevation: 0,
+                    backgroundColor: '#ffffff',
+                    height: 100, // Adjust the height as needed
+                    ...styles.shadow
+                }
         >
             <Tab.Screen
                 name="Home"
